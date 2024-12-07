@@ -1,0 +1,58 @@
+	<html>
+    <head>
+        <title>GoTyme Interest</title>
+        <link rel="stylesheet" type="text/css" href="Gotyme.css">
+    </head>
+<body>
+
+	
+    <h1 id="gt">GoTyme</h1>
+    <h2 id="st">Calculate Your Savings Growth with Ease</h2>
+
+
+    <div class="container">
+       <p>End-of-the-day-balance</p>
+       <input type="text" id="balance-input" value="0">
+
+       <p>Tax Withheld Amount</p>
+       <input type="text" id="tax" value="0" readonly>
+
+       <p>Daily Interest</p>
+       <input type="text" id="daily" value="0" readonly><br>
+
+       <p>Monthly Interest</p>
+       <input type="text" id="monthly" value="0" readonly><br>
+
+       <p>Annual Interest</p>
+       <input type="text" id="yearly" value="0" readonly><br>
+       <button class="button" onclick="solve()">Compute</button>
+    </div>
+    
+            <script>
+            function solve(){
+             var amount=parseFloat(document.getElementById('balance-input').value.trim());
+
+             if(isNaN(amount)){
+                alert("Please enter a valid number");
+                return;
+             }
+            var interest=4;
+            var per_anum=interest/100;
+            var annual=amount*per_anum; //interest after 1 year
+            var twa=annual*0.2; //annual*0.2
+            var left=annual*0.8;
+
+            var dai=left/365;
+            var mon=left/12;
+
+            document.getElementById('tax').value=twa.toFixed(2);
+            document.getElementById('daily').value=dai.toFixed(2);
+            document.getElementById('monthly').value=mon.toFixed(2);
+            document.getElementById('yearly').value=annual.toFixed(2);
+            }
+
+        </script>
+
+    </div>
+</body>
+</html>
